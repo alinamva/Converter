@@ -10,7 +10,7 @@
 <body>
 
         <header>
-            <img src="image/logo.png">
+            <img src="image/logo.png" alt="logo">
             <ul>
                 <li>БАНК</li>
                 <li>БИЗНЕС</li>
@@ -22,33 +22,35 @@
             </ul>
             <button>ВОЙТИ</button>
         </header>
+        
         <div class="main-container">
         <h1>Конвертер валют онлайн</h1>
         <div class="blocks">
         <div class="first-block">
             <p>У меня есть </p>
             <table>
-                <td class="active">RUB</td>
+                <td class="def active">RUB</td>
                 <td>USD</td>
                 <td>EUR</td>
                 <td>GBP</td>
             </table>
             <div class="input-div">
-                <input placeholder='0.00' inputmode="decimal" type="number" value="1">
+                <input class="first-num" placeholder='0.00' inputmode="decimal" type="number" value="1">
             <p>1 RUB = 0.0135 USD</p>
             </div>
         </div>
         <div class="second-block">
             <p>Хочу приобрести </p>
             <table>
-                <td>RUB</td>
-                <td class="active">USD</td>
-                <td>EUR</td>
+                <td >RUB</td>
+                <td class="def active">USD</td>
+                <td >EUR</td>
                 <td>GBP</td>
             </table>
             <div class="input-div">
-            <input placeholder='' inputmode="decimal" type="number" value="">
+            <input class="second-num" placeholder='1' inputmode="decimal" type="number" value="">
             <p>1 USD = 73.8896 RUB</p>
+            
         </div>
         </div>
         </div>

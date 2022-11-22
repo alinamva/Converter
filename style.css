@@ -3,28 +3,28 @@ body {
     margin:0;
     padding: 0;
     font-family: 'Roboto';
+    
 }
-@media (min-width:992px){
+
     
 header{
-    width: 100%;
-    height: 3.7vw;
+    padding: 1% 0;
+
     background-color: rgba(245, 245, 246, 1);
-    display: inline-flex;
-    justify-content: space-between;
+    display:flex;
+
+    justify-content: space-around;
     align-items: center;
 }
 img {
-    width: 6.5vw;
-    height: 1.7vw;
-    margin-left: 7%;
     cursor: pointer;
 }
 ul {
     display: flex;
     color: rgba(149, 155, 164, 1);
-    font-size: 1vw;
+    font-size: 1.2vw;
     list-style: none;
+    margin: 0;
     padding: 0;
     width: 55%;
 }
@@ -40,36 +40,36 @@ button {
     color: black;
     font-weight: 600;
     border: none;
-    width: 4.4vw;
-    height: 2.2vw;
-    font-size: 1vw;
-    margin-right: 7%;
+    padding: 0.5% 1%;
+    font-size: 1.2vw;
     cursor: pointer;
+
 }
 .main-container {
-    width: 55%;
-    height: 29vw;
-    margin: 5% 24%;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
 }
 h1 {
     font-weight: 700;
-    font-size: 2.7vw;
+    font-size: 3.2vw;
 }
 .blocks {
     display: flex;
-    width: 100%;
+    flex-direction: row;
+    justify-content: center;
 }
-.first-block {
-    width: 50%;
-    height: 23vw;
+.first-block,.second-block{
+    margin: 0 6vw;
 }
-.main-container p {
+ p {
     color: rgba(149, 155, 164, 1);
-    font-size: 1vw;
+    font-size: 1.4vw;
 }
 table {
     border-collapse: collapse;
-    width: 20vw;
+    width: 25vw;
     height: 2.3vw;
     font-size: 1.3vw;
     text-align: center;
@@ -78,22 +78,24 @@ table td {
     border: 1px solid rgba(149, 155, 164, 1);
     color: rgba(198, 198, 198, 1);
     cursor: pointer;
+    max-height: 30px;
+    
 }
 table td:hover {
     background-color: rgba(131, 58, 224, 1);
     border: 1px solid rgba(131, 58, 224, 1);
 }
-.second-block {
-    width: 50%;
-    height: 23vw;
-}
 .input-div {
-    width: 19vw;
-    height: 10vw;
+    width: 24vw;
     background-color: white;
     margin-top: 5%;
     border: 1px solid rgba(149, 155, 164, 1);
-    padding-left: 1vw;
+    padding: 2vw 0.4vw 1vw;
+    border-radius: 5px;
+}
+.input-div p{
+    margin:1vw 0 0 0;
+    font-size: 0.9vw;
 }
 input{
     height: 70%;
@@ -106,10 +108,63 @@ input{
 .active {
     background-color: rgba(131, 58, 224, 1);
     border: 1px solid rgba(131, 58, 224, 1);
+    color: white;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+@media screen and (max-width: 772px) and (min-width: 320px) {
+  header {
+    justify-content: space-between;
+    padding: 1%  5%;
+  }
+    .blocks {
+        display: block;
+    }
+    ul {
+        display: none;
+    }
+    button {
+        font-size: 11px;
+    }
+    h1 {
+        font-size: 22px;
+    }
+    .main-container p {
+        font-size: 14px;
+    }
+    .blocks {
+        flex-direction: column;
+    }
+    .first-block, .second-block{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin:0;
+    }
+    .input-div {
+        width: 280px;
 }
+.input-div p{
+    margin:1vw 0 0 0;
+    font-size: 12px;
+}
+    input{
+        font-size:33px;
+        font-weight: 700;
+        height: 65px;
+    }
+    table {
+        width: 280px;
+        font-size: 16px;
+    }
+    table td {
+        height: 30px; 
+    }
+    
+
+    } 
+
+ 
