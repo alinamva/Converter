@@ -12,7 +12,7 @@
         <header>
             <img src="image/logo.png" alt="logo">
             <ul>
-                <li>БАНК</li>
+                <li class="activate">БАНК</li>
                 <li>БИЗНЕС</li>
                 <li>ИНВЕСТИЦИЯ</li>
                 <li>СТРАХОВАНИЕ</li>
@@ -28,28 +28,28 @@
         <div class="blocks">
         <div class="first-block">
             <p>У меня есть </p>
-            <table>
-                <td class="def active">RUB</td>
-                <td>USD</td>
-                <td>EUR</td>
-                <td>GBP</td>
-            </table>
+            <div class ="from">
+                <button class='usd' value='USD'>USD</button>
+                <button class='try' value='TRY' class="active">TRY</button>
+                <button class='eur' value='EUR'>EUR</button>
+                <button class='gbp' value='GBP'>GBP</button>
+            </div>
             <div class="input-div">
-                <input class="first-num" placeholder='0.00' inputmode="decimal" type="number" value="1">
-            <p>1 RUB = 0.0135 USD</p>
+                <input class="first-num" id='num' placeholder='0.00' inputmode="decimal" value="1">
+            <p class="from-text">1 USD = 18.609974 TRY</p>
             </div>
         </div>
         <div class="second-block">
             <p>Хочу приобрести </p>
-            <table>
-                <td >RUB</td>
-                <td class="def active">USD</td>
-                <td >EUR</td>
-                <td>GBP</td>
-            </table>
+            <div class="to">
+                <button class='usd' value='USD' >USD</button>
+                <button class='try' value='TRY'>TRY</button>
+                <button class='eur' value='EUR' >EUR</button>
+                <button class='gbp' value='GBP' class="active">GBP</button> 
+            </div>
             <div class="input-div">
-            <input class="second-num" placeholder='1' inputmode="decimal" type="number" value="">
-            <p>1 USD = 73.8896 RUB</p>
+            <input class="second-num" id="ans" placeholder='1' inputmode="decimal" value="">
+            <p class="to-text">1 TRY = 0.053735 USD</p>
             
         </div>
         </div>
