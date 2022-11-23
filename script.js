@@ -15,16 +15,12 @@ firstNum.addEventListener('input', (e) => {
 secondNum.addEventListener('input', (e) => {
     e.target.value = e.target.value.split(',').join('.');
 });
-
-
 let convertFromCurrency = 'USD';
 let convertToCurrency = 'TRY';
 let convertFromUSD = document.querySelector("div.from > button.usd");
 let convertFromTRY = document.querySelector("div.from > button.try");
 let convertFromEUR = document.querySelector("div.from > button.eur");
 let convertFromGBP = document.querySelector("div.from > button.gbp");
-
-
 let convertToUSD = document.querySelector("div.to > button.usd");
 let convertToTRY = document.querySelector("div.to > button.try");
 let convertToEUR = document.querySelector("div.to > button.eur");
@@ -32,7 +28,6 @@ let convertToGBP = document.querySelector("div.to > button.gbp");
 
 let allConvertFroms = [convertFromUSD, convertFromTRY, convertFromEUR, convertFromGBP];
 let allConvertTos = [convertToUSD, convertToTRY, convertToEUR, convertToGBP];
-
     
 let url = `https://api.exchangerate.host/latest?base=${convertFromCurrency}&symbols=${convertToCurrency}`;
 
@@ -58,41 +53,30 @@ function convert(firstNum, secondNum) {
     });
 }
 convert(firstNum,secondNum);
-
 function converter(firstNum, secondNum) {
     secondNum.addEventListener('input', () => {
-
         if (!isNaN(secondNum.value)) {
-            fetch(url)
+            fetch(`https://api.exchangerate.host/latest?base=${convertToCurrency}&symbols=${convertFromCurrency}`)
                 .then(response => response.json())
                 .then(data => {
-                    firstNum.value = data.rates[convertToCurrency] * secondNum.value;
+                    firstNum.value = data.rates[convertFromCurrency] * secondNum.value;
                 });
-    
         } else {
             secondNum.value = 0;
         }
-
     });
 }
-
 converter(firstNum, secondNum);
-
 allConvertFroms.forEach((element) => {
-   
     element.addEventListener('click', () => {
-
         element.style.backgroundColor = '#833AE0';
         element.style.color = 'white';
-
         for(a in allConvertFroms) {
             if (allConvertFroms[a] !== element) {
                 allConvertFroms[a].style.backgroundColor = 'white';
                 allConvertFroms[a].style.color = 'rgb(163, 163, 163)';
             }
         }
-        
-
         convertFromCurrency = element.innerText;
  url = `https://api.exchangerate.host/latest?base=${convertFromCurrency}&symbols=${convertToCurrency}`;
         fetch(url)
@@ -100,15 +84,11 @@ allConvertFroms.forEach((element) => {
             .then(data => {
              secondNum.value =  data.rates[convertToCurrency] * firstNum.value;
       convertFromInfoText.innerText = `1 ${convertFromCurrency} = ${data.rates[convertToCurrency]} ${convertToCurrency}`;
-               
-
             })
             fetch(`https://api.exchangerate.host/latest?base=${convertToCurrency}&symbols=${convertFromCurrency}`)
             .then(response => response.json())
-            .then(data => {
-             
+            .then(data => {    
                 convertToInfoText.innerText = `1 ${convertToCurrency} = ${data.rates[convertFromCurrency]} ${convertFromCurrency}`;
-
             })
     });
 });
@@ -124,21 +104,19 @@ allConvertTos.forEach((element) => {
                 allConvertTos[a].style.color = 'rgb(163, 163, 163)';
             }
         }
-
         convertToCurrency = element.innerText;     
         url = `https://api.exchangerate.host/latest?base=${convertFromCurrency}&symbols=${convertToCurrency}`;
 
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                firstNum.value = data.rates[convertToCurrency] * secondNum.value;
-    
                 convertFromInfoText.innerText = `1 ${convertFromCurrency} = ${data.rates[convertToCurrency]} ${convertToCurrency}`;
             })
             fetch(`https://api.exchangerate.host/latest?base=${convertToCurrency}&symbols=${convertFromCurrency}`)
             .then(response => response.json())
             .then(data => {
-      convertToInfoText.innerText = `1 ${convertToCurrency} = ${data.rates[convertFromCurrency]} ${convertFromCurrency}`;    
+      convertToInfoText.innerText = `1 ${convertToCurrency} = ${data.rates[convertFromCurrency]} ${convertFromCurrency}`;   
+       firstNum.value = data.rates[convertFromCurrency] * secondNum.value;
             })
             converter(firstNum, secondNum);
     })
