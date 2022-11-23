@@ -100,7 +100,14 @@ allConvertFroms.forEach((element) => {
             .then(data => {
              secondNum.value =  data.rates[convertToCurrency] * firstNum.value;
       convertFromInfoText.innerText = `1 ${convertFromCurrency} = ${data.rates[convertToCurrency]} ${convertToCurrency}`;
-                convertToInfoText.innerText = `1 ${convertToCurrency} = ${data.rates[convertToCurrency]} ${convertFromCurrency}`;
+               
+
+            })
+            fetch(`https://api.exchangerate.host/latest?base=${convertToCurrency}&symbols=${convertFromCurrency}`)
+            .then(response => response.json())
+            .then(data => {
+             
+                convertToInfoText.innerText = `1 ${convertToCurrency} = ${data.rates[convertFromCurrency]} ${convertFromCurrency}`;
 
             })
     });
@@ -125,8 +132,13 @@ allConvertTos.forEach((element) => {
             .then(response => response.json())
             .then(data => {
                 firstNum.value = data.rates[convertToCurrency] * secondNum.value;
-      convertToInfoText.innerText = `1 ${convertToCurrency} = ${data.rates[convertFromCurrency.value]} ${convertFromCurrency}`;
+    
                 convertFromInfoText.innerText = `1 ${convertFromCurrency} = ${data.rates[convertToCurrency]} ${convertToCurrency}`;
+            })
+            fetch(`https://api.exchangerate.host/latest?base=${convertToCurrency}&symbols=${convertFromCurrency}`)
+            .then(response => response.json())
+            .then(data => {
+      convertToInfoText.innerText = `1 ${convertToCurrency} = ${data.rates[convertFromCurrency]} ${convertFromCurrency}`;    
             })
             converter(firstNum, secondNum);
     })
