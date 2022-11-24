@@ -9,12 +9,7 @@ let li = document.querySelector('li')
 let resultFrom;
 let resultTo;
 
-firstNum.addEventListener('input', (e) => {
-    e.target.value = e.target.value.split(',').join('.');
-});
-secondNum.addEventListener('input', (e) => {
-    e.target.value = e.target.value.split(',').join('.');
-});
+
 let convertFromCurrency = 'USD';
 let convertToCurrency = 'TRY';
 let convertFromUSD = document.querySelector("div.from > button.usd");
@@ -30,6 +25,7 @@ let allConvertFroms = [convertFromUSD, convertFromTRY, convertFromEUR, convertFr
 let allConvertTos = [convertToUSD, convertToTRY, convertToEUR, convertToGBP];
     
 let url = `https://api.exchangerate.host/latest?base=${convertFromCurrency}&symbols=${convertToCurrency}`;
+let ur = `https://api.exchangerate.host/latest?base=${convertToCurrency}&symbols=${convertFromCurrency}`;
 
 convertFromUSD.style.backgroundColor = '#833AE0';
 convertFromUSD.style.color = 'white';
@@ -38,30 +34,22 @@ convertToTRY.style.color = 'white';
 
 function convert(firstNum, secondNum) {
     firstNum.addEventListener('input', () => {
-        if (!isNaN(firstNum.value)) {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     secondNum.value = data.rates[convertToCurrency] * firstNum.value;
                 });
-        } else {
-            firstNum.value = '';
-        }
     });
 }
 convert(firstNum,secondNum);
 
 function converter(firstNum, secondNum) {
     secondNum.addEventListener('input', () => {
-        if (!isNaN(secondNum.value)) {
-            fetch(`https://api.exchangerate.host/latest?base=${convertToCurrency}&symbols=${convertFromCurrency}`)
+            fetch(ur)
                 .then(response => response.json())
                 .then(data => {
                     firstNum.value = data.rates[convertFromCurrency] * secondNum.value;
-                });
-        } else {
-            secondNum.value = '0';
-        }
+                }); 
     });
 }
 converter(firstNum, secondNum);
@@ -120,7 +108,25 @@ allConvertTos.forEach((element) => {
             converter(firstNum, secondNum);
     })
 });
-// function limitZeros(){
-//     if(document.getElementById("num").value[0] == "0")
-//         document.getElementById("num").value = "0";
-// }
+
+const mask1 = new IMask(firstNum, {
+    mask: Number, 
+    scale: 4,  
+    signed: false,  
+    thousandsSeparator:' ',  
+    padFractionalZeros: false,  
+    normalizeZeros: true,  
+    radix: '.',  
+    mapToRadix: ['.'],  
+  })
+
+  const mask2 = new IMask(secondNum, {
+    mask: Number, 
+    scale: 4,  
+    signed: false,  
+    thousandsSeparator:' ',  
+    padFractionalZeros: false,  
+    normalizeZeros: true,  
+    radix: '.',  
+    mapToRadix: ['.'],  
+  })
