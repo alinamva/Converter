@@ -121,3 +121,7 @@ allConvertTos.forEach((element) => {
             converter(firstNum, secondNum);
     })
 });
+// function limitZeros(){
+//     if(document.getElementById("num").value[0] == "0")
+//         document.getElementById("num").value = "0";
+// }

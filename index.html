@@ -35,7 +35,7 @@
                 <button class='gbp' value='GBP'>GBP</button>
             </div>
             <div class="input-div">
-                <input class="first-num" id='num' placeholder='0.00' inputmode="decimal" value="1">
+                <input class="first-num" oninput="limitZeros()" id='num' placeholder='0.00' inputmode="decimal" value="">
             <p class="from-text">1 USD = 18.609974 TRY</p>
             </div>
         </div>
@@ -48,13 +48,14 @@
                 <button class='gbp' value='GBP' class="active">GBP</button> 
             </div>
             <div class="input-div">
-            <input class="second-num" id="ans" placeholder='1' inputmode="decimal" value="">
+            <input class="second-num" id="ans" placeholder='0.00' inputmode="decimal" value="">
             <p class="to-text">1 TRY = 0.053735 USD</p>
             
         </div>
         </div>
         </div>
         </div>
+        
 </body>
 <script src="script.js"></script>
 </html>
