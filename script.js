@@ -38,21 +38,19 @@ convertToTRY.style.color = 'white';
 
 function convert(firstNum, secondNum) {
     firstNum.addEventListener('input', () => {
-
         if (!isNaN(firstNum.value)) {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     secondNum.value = data.rates[convertToCurrency] * firstNum.value;
                 });
-    
         } else {
-            firstNum.value = 0;
+            firstNum.value = '';
         }
-
     });
 }
 convert(firstNum,secondNum);
+
 function converter(firstNum, secondNum) {
     secondNum.addEventListener('input', () => {
         if (!isNaN(secondNum.value)) {
@@ -62,11 +60,12 @@ function converter(firstNum, secondNum) {
                     firstNum.value = data.rates[convertFromCurrency] * secondNum.value;
                 });
         } else {
-            secondNum.value = 0;
+            secondNum.value = '0';
         }
     });
 }
 converter(firstNum, secondNum);
+
 allConvertFroms.forEach((element) => {
     element.addEventListener('click', () => {
         element.style.backgroundColor = '#833AE0';
