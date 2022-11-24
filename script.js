@@ -108,7 +108,6 @@ allConvertTos.forEach((element) => {
             converter(firstNum, secondNum);
     })
 });
-
 const mask1 = new IMask(firstNum, {
     mask: Number, 
     scale: 4,  
