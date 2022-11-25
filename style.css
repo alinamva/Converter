@@ -5,46 +5,23 @@ body {
     font-family: 'Roboto';
     
 }
-
-    
-header{
-    padding: 1% 0;
-
-    background-color: rgba(245, 245, 246, 1);
-    display:flex;
-
-    justify-content: space-around;
-    align-items: center;
-}
 img {
     cursor: pointer;
 }
-ul {
-    display: flex;
-    color: rgba(149, 155, 164, 1);
-    font-size: 1.2vw;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 55%;
-}
-li {
-    margin: 2%;
-    cursor: pointer;
-}
-li:hover {
-    color: black;
-}
-button {
+
+.btn-outline-success {
     background-color: white;
     color: black;
-    font-weight: 600;
     border: none;
-    padding: 0.5% 1%;
-    font-size: 1.2vw;
     cursor: pointer;
 
 }
+.btn-outline-success:hover {
+background-color:white;
+color: black;
+
+}
+
 .activate {
     color: black;
 }
@@ -53,6 +30,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;  
+    margin-top: 5%;
 }
 h1 {
     font-weight: 700;
@@ -92,7 +70,7 @@ h1 {
     border: 1px solid rgba(131, 58, 224, 1);
 }
 .input-div {
-    width: 24vw;
+    width: 25vw;
     background-color: white;
     margin-top: 5%;
     border: 1px solid rgba(149, 155, 164, 1);
@@ -111,16 +89,7 @@ input{
     font-size: 3.5vw;
     font-weight: 700;
 }
-.active {
-    background-color: rgba(131, 58, 224, 1);
-    border: 1px solid rgba(131, 58, 224, 1);
-    color: white;
-}
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
 @media screen and (max-width: 772px) and (min-width: 320px) {
   header {
     justify-content: space-between;
@@ -149,9 +118,11 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
         align-items: center;
         margin:0;
+        margin-top: 10px;
     }
     .input-div {
         width: 280px;
+        
 }
 .input-div p{
     margin:1vw 0 0 0;
